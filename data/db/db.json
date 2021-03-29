@@ -1,0 +1,14 @@
+[
+    {
+        "id":1,
+        "purpose": "sitting in a cafe",
+        "cost" : 2500,
+        "when" : 1617042336
+    },
+    {
+        "id":2,
+        "purpose": "mobile units",
+        "cost" : 4200,
+        "when" : 1617031536
+    }
+]
