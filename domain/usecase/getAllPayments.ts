@@ -1,6 +1,6 @@
 import { Payment } from "../entity/Payment";
-import PaymentRepository from "../interface/PaymentsRepository";
-import PaymentUsecase from './paymentUsecase';
+import {PaymentRepository, QuerySpecifications} from "../interface/PaymentsRepository";
+import {PaymentUsecase, PaymentRequest} from './paymentUsecase';
 
 class GetAllPayments extends PaymentUsecase{
 
@@ -8,7 +8,23 @@ class GetAllPayments extends PaymentUsecase{
         super(paymentRepository);
     }
     
-    public excute (query: string): Array<Payment>{
-        return this.paymentRepository.getPayments(query);
+    public excute (request: GetAllPaymentRequest): Array<Payment>{
+        return this.paymentRepository.getPayments(request.getQuerySpec());
     }
+}
+
+class GetAllPaymentRequest extends PaymentRequest {
+
+    private querySpec : QuerySpecifications;
+
+    constructor(querySpec : QuerySpecifications) {
+        super();
+        this.querySpec = querySpec;
+    }
+
+    
+    public getQuerySpec() : QuerySpecifications {
+        return this.querySpec;
+    }
+    
 }

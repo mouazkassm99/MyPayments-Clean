@@ -1,7 +1,7 @@
 class Payment{
 
    
-    private paymentData: PaymentData;
+    private paymentData: PaymentData; 
 
     constructor(paymentData: PaymentData){
         this.paymentData = paymentData;
@@ -18,11 +18,11 @@ class Payment{
     
 }
 
-class PaymentData{
-    public id:number;
-    public purpose:string;
-    public cost:number;
-    public when:Date;
+interface PaymentData{
+    id:number;
+    purpose:string;
+    cost:number;
+    when:Date;
 }
 
 export{
