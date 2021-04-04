@@ -1,19 +1,21 @@
-import PaymentRepository from "../interface/PaymentsRepository";
+import {PaymentRepositoryInterface} from "../interface/PaymentsRepository";
+import { PaymentReq } from "./paymentRequest";
 
 abstract class PaymentUsecase{
 
-    protected paymentRepository: PaymentRepository;
+    protected paymentRepository: PaymentRepositoryInterface;
 
-    constructor(paymentRepository: PaymentRepository){
+    constructor(paymentRepository: PaymentRepositoryInterface){
         this.paymentRepository = paymentRepository;
     }
 
+    abstract excute(params: PaymentReq);
+
 }
 
-class PaymentRequest{}
+
 
 export{
     PaymentUsecase,
-    PaymentRequest
 }
 

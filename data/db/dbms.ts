@@ -1,5 +1,6 @@
 import { Payment, PaymentData } from '../../domain/entity/Payment';
-import db from './db.json'
+import { QuerySpecifications } from '../../domain/interface/PaymentsRepository';
+// import db from './db.json'
 
 export default class DBManager{
 
@@ -32,16 +33,15 @@ export default class DBManager{
         return obj;
     }
 
-    public getAllPayments(query: string): Array<Payment>{
+    public getAllPayments(querySpec: QuerySpecifications): Array<Payment>{
+
+        //use querySpecs for returning filtered data .. 
+
         return this.payments;
     }
 
     public addNewPayment(payment:Payment):void{
         this.payments.push(payment);
-    }
-
-    getPayments(){
-        return this.payments;
     }
 
 }

@@ -1,17 +1,22 @@
 import { Payment } from '../../domain/entity/Payment'
-import PaymentRepository from '../../domain/interface/PaymentsRepository'
+import {PaymentRepositoryInterface, QuerySpecifications } from '../../domain/interface/PaymentsRepository'
 import DBManager from '../db/dbms';
 
-export default class PaymentRepositoryDB implements PaymentRepository{
+export default class PaymentRepositoryDB implements PaymentRepositoryInterface{
     
     private dbms:DBManager;
+
+    constructor(dbms:DBManager){
+        this.dbms = dbms;
+    }
+
 
     public getPayment(id: number): Payment{
         return this.dbms.getPaymentById(id);
     }
 
-    public getPayments(query: string):Array<Payment>{
-        return this.dbms.getAllPayments(query);
+    public getPayments(querySpec: QuerySpecifications):Array<Payment>{
+        return this.dbms.getAllPayments(querySpec);
     }
 
     public addPayment(payment: Payment):void{
