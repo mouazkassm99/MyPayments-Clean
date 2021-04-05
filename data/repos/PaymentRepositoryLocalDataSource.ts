@@ -2,7 +2,7 @@ import { Payment } from '../../domain/entity/Payment'
 import {PaymentRepositoryInterface, QuerySpecifications } from '../../domain/interface/PaymentsRepository'
 import DBManager from '../db/dbms';
 
-export default class PaymentRepositoryDB implements PaymentRepositoryInterface{
+export default class PaymentRepositoryLocalDataSource implements PaymentRepositoryInterface{
     
     private dbms:DBManager;
 

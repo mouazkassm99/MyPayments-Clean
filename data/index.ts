@@ -1,9 +1,17 @@
+import { PaymentRepositoryInterface } from "../domain/interface/PaymentsRepository";
 import DBManager from "./db/dbms"
-import PaymentRepositoryDB from "./repos/PaymentRepositoryImpl"
+import PaymentRepositoryLocalDataSource from "./repos/PaymentRepositoryLocalDataSource"
 
 
-const repo = new PaymentRepositoryDB(new DBManager()); 
+// const repo = new PaymentRepositoryLocalDataSource(new DBManager()); 
 
-export{
-    repo,
+class DBRepositoryBuilder {
+    constructor() {}
+
+    public makeLocalDataSource() : PaymentRepositoryInterface{
+        return new PaymentRepositoryLocalDataSource(new DBManager());
+    }
 }
+
+
+export default DBRepositoryBuilder;
